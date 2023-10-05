@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { NavLinksList } from "../../components";
 
 import "../../styles/__navbar.css";
-import { Flex, HStack, IconButton, Image, Text } from "@chakra-ui/react";
-import { XIcon } from "../../icons/XIcon";
+import { Flex, Image } from "@chakra-ui/react";
 import { DrawerCart } from "../../components/Cart/DrawerCart";
 
 export const NavBar = () => {
@@ -12,7 +10,13 @@ export const NavBar = () => {
   const [display, setDisplay] = useState("none");
 
   return (
-    <Flex justify="space-around" bgColor="secondary" pos={"sticky"} top={'0'} left={'0'}>
+    <Flex
+      justify="space-around"
+      bgColor="secondary"
+      pos={"sticky"}
+      top={"0"}
+      left={"0"}
+    >
       <Flex
         minW="100vw"
         fontSize="xl"
