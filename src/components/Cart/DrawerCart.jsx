@@ -53,33 +53,32 @@ export const DrawerCart = () => {
     <>
       <Flex placeContent="center" pos="sticky" bottom="60px" left="0">
         <Button
-          width="10rem"
+          width="6rem"
           ref={btnRef}
           bg="#a9b277"
-          color="primary"
+          color="white"
           _hover={{ color: "white", bg: "secondary" }}
           p={6}
           my="1rem"
           onClick={onOpen}
         >
-          <Flex
+          {/* <Flex
             justifyContent="space-between"
             align="center"
             width="100%"
             height="1rem"
-          >
-            <CartIcon />
-            <Tag
+          > */}
+            {/* <Tag
               bg="#cbcfa6"
-              color="primary"
-              fontWeight={'bold'}
+              color="white"
+              fontWeight={"bold"}
               fontSize={["sm", "sm", "lg", "lg"]}
               p={2}
-              // px={2}
-            >
-              Items: {getQuantity()}
-            </Tag>
-          </Flex>
+              w={'60%'}
+            > */}
+              <CartIcon />: {getQuantity()}
+            {/* </Tag> */}
+          {/* </Flex> */}
         </Button>
       </Flex>
 

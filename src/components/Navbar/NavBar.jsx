@@ -24,9 +24,9 @@ export const NavBar = () => {
           <Image src="/assets/img3.jpg" alt="logo-focus"></Image>
         </NavLink>
 
-        {/* <Flex gap={2}>
+        <Flex gap={2}>
           <DrawerCart />
-        </Flex> */}
+        </Flex>
 
         {/* <Flex
           fontSize={["sm", "sm", "sm", "lg"]}

@@ -30,7 +30,6 @@ function App() {
           <Card key={product.id} product={product} />
         ))}
       </SimpleGrid>
-      <DrawerCart />
     </>
   );
 }
