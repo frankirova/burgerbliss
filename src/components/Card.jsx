@@ -1,42 +1,49 @@
-import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { CartContext } from "../context/cartContext";
+import { useContext } from "react";
 
-export const Card = ({ product }) => {
+export const Card = ({ id, stock, name, price, url, toppings }) => {
+  const { addToCart } = useContext(CartContext);
+  const quantity = 1;
+
+  const addTo = (quantity) => {
+    if (stock !== "0") {
+      addToCart({ id, url, price, name, quantity });
+    } else {
+      toast.error("Error, agregaste un producto sin Stock al CARRITO!");
+    }
+  };
   return (
     <SimpleGrid
       rows={[4, 4, 4, 4]}
-      key={product.id}
+      key={id}
       p={6}
       placeItems={"center"}
       maxW={"sm"}
       minW={"sm"}
-      maxH={'xl'}
-      minH={'xl'}
+      maxH={"xxl"}
+      minH={"xxl"}
       bg={"secondary"}
       color={"#242424"}
       overflowWrap={"break-word"}
     >
       <Box as={"section"} px={4}>
-        <Image src={product.url} />
+        <Image src={url} />
       </Box>
       <Box textAlign={"start"} minW={"300px"} maxW={"300px"}>
         <Text color={"primary"} fontWeight={"black"} fontSize={"4xl"}>
-          {product.name}
+          {name}
         </Text>
 
-        {product.toppings ? (
-          <Text fontWeight={"bold"} fontSize={"xl"}>
-            {product.toppings}
-          </Text>
-        ) : (
-          <Text fontWeight={"bold"} fontSize={"xl"}>
-            {product.category}
-          </Text>
-        )}
+        <Text fontWeight={"bold"} fontSize={"xl"}>
+          {toppings}
+        </Text>
 
         <Text color={"primary"} fontWeight={"bold"} fontSize={"4xl"}>
-          ${product.price}
+          ${price}
         </Text>
       </Box>
+      <Button onClick={() => addTo(quantity)}>Agregar</Button>
     </SimpleGrid>
   );
 };

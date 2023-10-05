@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { product } from "./helpers/products";
-import { Box, Container, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import { NavBar } from "./components/Navbar/NavBar";
 import { Card } from "./components/Card";
-import { DrawerCart } from "./components/Cart";
 function App() {
   const [products, setProducts] = useState([]);
 
@@ -27,7 +26,15 @@ function App() {
         padding={4}
       >
         {products.map((product) => (
-          <Card key={product.id} product={product} />
+          <Card
+            key={product.id}
+            id={product.id}
+            url={product.url}
+            price={product.price}
+            name={product.name}
+            toppings={product.toppings}
+            stock={product.stock}
+          />
         ))}
       </SimpleGrid>
     </>
