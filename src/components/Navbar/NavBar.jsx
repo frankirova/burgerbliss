@@ -12,11 +12,11 @@ export const NavBar = () => {
   const [display, setDisplay] = useState("none");
 
   return (
-    <Flex mt="auto" justify="space-around" bgColor="secondary" minH="10vh">
+    <Flex justify="space-around" bgColor="secondary" pos={"sticky"} top={'0'} left={'0'}>
       <Flex
-        minW="90vw"
+        minW="100vw"
         fontSize="xl"
-        mx="2rem"
+        // mx="2rem"
         justify="space-between"
         align="center"
       >
@@ -24,9 +24,7 @@ export const NavBar = () => {
           <Image src="/assets/img3.jpg" alt="logo-focus"></Image>
         </NavLink>
 
-        <Flex gap={2}>
-          <DrawerCart />
-        </Flex>
+        <DrawerCart />
 
         {/* <Flex
           fontSize={["sm", "sm", "sm", "lg"]}
