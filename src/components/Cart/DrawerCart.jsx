@@ -1,12 +1,11 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import { useGetMessageCart } from "../../hooks/useGetMessageCart";
-// import { createOrder } from "../../services/firestore_db/orders_db";
+import { createOrder } from "../../helpers/db";
 import { Checkout } from "../Checkout";
 import { MyDivider, CartList, PreviewOrder, BackButton } from "../Cart";
 
 import {
-  Box,
   Flex,
   useDisclosure,
   Link,
@@ -25,6 +24,8 @@ import {
 import { CartIcon } from "../../icons/CartIcon";
 
 export const DrawerCart = () => {
+  const phone = import.meta.env.VITE_PHONE_NUMBER;
+  
   const { cart, checkout, getTotal, clearCart, getQuantity } =
     useContext(CartContext);
   const total = getTotal();
@@ -151,7 +152,7 @@ export const DrawerCart = () => {
                   isExternal
                   as={Link}
                   colorScheme="whatsapp"
-                  href={`https://wa.me/543512274743?text=${encodeURIComponent(
+                  href={`https://wa.me/${phone}?text=${encodeURIComponent(
                     items
                   )}`}
                   leftIcon={

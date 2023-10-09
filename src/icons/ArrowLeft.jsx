@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 
-export const BarsIcon = () => {
+export const ArrowLeft = () => {
   return (
     <Box w={"24px"} color="white">
       <svg

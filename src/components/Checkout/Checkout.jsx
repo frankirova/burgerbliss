@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
-import { CartContext } from "../../context/cartContext";
-import { useForm } from "../../hooks/useForm";
-import { CheckoutCheckboxGroup, CheckoutInputGroup } from "../Checkout";
 
+import { CartContext } from "../../context/cartContext";
+import { CheckoutCheckboxGroup, CheckoutInputGroup } from "../Checkout";
 import { Flex, FormControl, Text } from "@chakra-ui/react";
+import { useContext, useEffect } from "react";
+import { useForm } from "../../hooks/useForm";
 
 export const Checkout = () => {
   const { updateCheckout } = useContext(CartContext);

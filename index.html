@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,26 @@
     <title>Vite + React</title>
   </head>
   <body>
+    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script async
+    defer
+    src="./src/helpers/authGoogle.js"></script>
+    <script
+      async
+      defer
+      src="https://apis.google.com/js/api.js"
+      id="gapi"
+      onload="gapiLoaded()"
+    ></script>
+    <script
+      async
+      defer
+      src="https://accounts.google.com/gsi/client"
+      id="gis"
+      onload="gisLoaded()"
+    ></script>
   </body>
 </html>
