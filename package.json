@@ -14,6 +14,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@google-cloud/local-auth": "2.1.0",
+    "@supabase/supabase-js": "^2.38.0",
     "framer-motion": "^10.16.4",
     "googleapis": "105",
     "papaparse": "^5.4.1",

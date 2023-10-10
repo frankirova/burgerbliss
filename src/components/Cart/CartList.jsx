@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cartContext";
 import { Box, Divider, Grid, GridItem, Image } from "@chakra-ui/react";
+import { TrashIcon } from "../../icons/TrashIcon";
 
 export const CartList = ({ cart }) => {
   const { removeItem } = useContext(CartContext);
@@ -8,27 +9,27 @@ export const CartList = ({ cart }) => {
   return (
     <>
       {cart.map((prod) => (
-        <Box as="article" key={prod.id} my="1rem">
-          <Grid templateColumns="repeat(5, 70px)" gap={4}>
-            <GridItem w="100%" h="20">
-              <Image src="//placehold.it/64x64" borderRadius="9999" />
+        <Box as="article" key={prod.id}>
+          <Grid templateColumns="repeat(4, 72px)" gap={4} placeContent='center' fontSize='lg'>
+            {/* <GridItem w="100%" h="20">
+              <Image src="//placehold.it/48x48" borderRadius="9999" />
+            </GridItem> */}
+            <GridItem color='primary' h="20">
+              {prod.name}
             </GridItem>
-            <GridItem w="100%" h="20">
-              {prod.title}
-            </GridItem>
-            <GridItem w="100%" h="20">
+            <GridItem  h="20">
               x{prod.quantity}
             </GridItem>
-            <GridItem w="100%" h="20">
+            <GridItem  h="20">
               ${prod.price}
             </GridItem>
-            <GridItem w="100%" h="20">
+            <GridItem h="20">
               <Box
                 onClick={() => {
                   removeItem(prod.id);
                 }}
               >
-                <i className="fa-solid fa-xmark"></i>
+                <TrashIcon />
               </Box>
             </GridItem>
           </Grid>

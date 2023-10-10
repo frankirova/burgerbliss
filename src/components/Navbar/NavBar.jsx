@@ -10,15 +10,11 @@ export const NavBar = () => {
       pos={"sticky"}
       top={"0"}
       left={"0"}
+      zIndex={"1"}
     >
-      <Flex
-        minW="100vw"
-        fontSize="xl"
-        justify="space-between"
-        align="center"
-      >
+      <Flex minW="100vw" fontSize="xl" justify="space-between" align="center">
         <NavLink to="/">
-          <Image src="/assets/img3.jpg" alt="logo-focus" />
+          <Image src="/assets/img3.jpg" alt="logo-bliss" />
         </NavLink>
         <DrawerCart />
       </Flex>

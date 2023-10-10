@@ -22,10 +22,11 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { CartIcon } from "../../icons/CartIcon";
+import { TrashIcon } from "../../icons/TrashIcon";
 
 export const DrawerCart = () => {
   const phone = import.meta.env.VITE_PHONE_NUMBER;
-  
+
   const { cart, checkout, getTotal, clearCart, getQuantity } =
     useContext(CartContext);
   const total = getTotal();
@@ -126,10 +127,9 @@ export const DrawerCart = () => {
                     clearCart();
                     onClose();
                   }}
-                  colorScheme="red"
                   mx="2"
                 >
-                  <i className="fa-solid fa-trash"></i>
+                  <TrashIcon />
                 </Button>
               </>
             )}
