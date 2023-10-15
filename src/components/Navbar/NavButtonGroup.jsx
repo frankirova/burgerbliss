@@ -8,8 +8,7 @@ export const NavButtonGroup = ({ setDisplay }) => {
         as={NavLink}
         to="/login"
         fontSize={["sm", "sm", "lg", "xl"]}
-        variant='solid'
-        // onClick={() => setDisplay("none")}
+        variant="solid"
       >
         Iniciar sesion
       </Button>
@@ -17,8 +16,7 @@ export const NavButtonGroup = ({ setDisplay }) => {
         as={NavLink}
         to="/signup"
         fontSize={["sm", "sm", "lg", "xl"]}
-        variant='solid'
-        // onClick={() => setDisplay("none")}
+        variant="solid"
       >
         Registrarse
       </Button>

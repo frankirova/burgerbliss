@@ -1,10 +1,12 @@
 import { createContext, useState } from "react";
 import { toast } from "react-hot-toast";
+import { getOffCustomers } from "../helpers/db";
 
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  // const [total, setTotal] = useState(0);
 
   const addToCart = (prodToAdd) => {
     if (!isInCart(prodToAdd.id)) {
@@ -27,12 +29,25 @@ export const CartProvider = ({ children }) => {
     return acc;
   };
 
-  const getTotal = () => {
-    let acc = 0;
-    cart.forEach((prod) => {
-      acc += prod.quantity * prod.price;
-    });
-    return acc;
+  const getTotal = async (phoneNumber) => {
+    try {
+      const customers_off = await getOffCustomers();
+
+      const clienteConCupon = customers_off?.find(
+        (phone) => phone.phone === phoneNumber
+      );
+      let acc = 0;
+      cart.forEach((prod) => {
+        acc += prod.quantity * prod.price;
+      });
+      if (clienteConCupon) {
+        acc = acc - acc * 0.1;
+      }
+      console.log(clienteConCupon)
+      return acc;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const removeItem = (id) => {

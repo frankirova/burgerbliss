@@ -25,6 +25,17 @@ export const CheckoutInputGroup = ({ handleChange, handleBlur, hasError }) => {
         focusBorderColor="primary"
       />
       {hasError && <Text color="red">{hasError.direction}</Text>}
+      <FormLabel>Telefono</FormLabel>
+      <Input
+        onChange={handleChange}
+        onBlur={handleBlur}
+        isRequired
+        name="phone"
+        type="text"
+        size="md"
+        focusBorderColor="primary"
+      />
+      {hasError && <Text color="red">{hasError.phone}</Text>}
     </>
   );
 };

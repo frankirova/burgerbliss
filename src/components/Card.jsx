@@ -2,7 +2,7 @@ import { Box, Button, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { CartContext } from "../context/cartContext";
 import { useContext } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import {CounterQuantity} from '../components/Cart/CounterQuantity'
+import { CounterQuantity } from "../components/Cart/CounterQuantity";
 
 export const Card = ({ id, stock, name, price, url, toppings }) => {
   const { addToCart } = useContext(CartContext);
@@ -45,8 +45,7 @@ export const Card = ({ id, stock, name, price, url, toppings }) => {
           ${price}
         </Text>
       </Box>
-      <CounterQuantity stock={stock} addTo={addTo}/>
-      {/* <Button onClick={() => addTo(quantity)}>Agregar</Button> */}
+      <CounterQuantity stock={stock} addTo={addTo} />
       <Toaster position="top-center" reverseOrder={false} />
     </SimpleGrid>
   );

@@ -1,44 +1,27 @@
-
-import { CartContext } from "../../context/cartContext";
 import { CheckoutCheckboxGroup, CheckoutInputGroup } from "../Checkout";
 import { Flex, FormControl, Text } from "@chakra-ui/react";
-import { useContext, useEffect } from "react";
-import { useForm } from "../../hooks/useForm";
 
-export const Checkout = () => {
-  const { updateCheckout } = useContext(CartContext);
-  const initialValue = {
-    email: "",
-    direction: "",
-    formaDePago: "",
-  };
-
-  const {
-    formState,
-    handleChange,
-    handleSubmit,
-    updateFormState,
-    hasError,
-    handleBlur,
-  } = useForm(initialValue);
-
-  useEffect(() => {
-    updateCheckout(formState);
-  }, [formState]);
-
+export const Checkout = ({
+  formState,
+  handleBlur,
+  handleChange,
+  handleSubmit,
+  hasError,
+  updateFormState,
+}) => {
   return (
     <>
       <FormControl onSubmit={handleSubmit}>
         <Flex direction="column" gap={2}>
           <CheckoutInputGroup
-            handleChange={handleChange}
             handleBlur={handleBlur}
+            handleChange={handleChange}
             hasError={hasError}
           />
           <CheckoutCheckboxGroup
             formState={formState}
-            updateFormState={updateFormState}
             hasError={hasError}
+            updateFormState={updateFormState}
           />
           {hasError && <Text color="red">{hasError.formaDePago}</Text>}
         </Flex>

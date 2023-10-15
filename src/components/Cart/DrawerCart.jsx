@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import { useGetMessageCart } from "../../hooks/useGetMessageCart";
 import { createOrder } from "../../helpers/db";
-import { Checkout } from "../Checkout";
+import { CheckoutContainer } from "../Checkout/CheckoutContainer";
 import { MyDivider, CartList, PreviewOrder, BackButton } from "../Cart";
 
 import {
@@ -28,7 +28,8 @@ export const DrawerCart = () => {
   const phone = import.meta.env.VITE_PHONE_NUMBER;
   const { cart, checkout, getTotal, clearCart, getQuantity } =
     useContext(CartContext);
-  const total = getTotal();
+  const [total, setTotal] = useState(0);
+  // const total = getTotal(checkout.phone);
 
   const [currentStep, setCurrentStep] = useState("cart");
   const [isLoading, setIsLoading] = useState(false);
@@ -42,11 +43,29 @@ export const DrawerCart = () => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    const fetchTotal = async () => {
+      setIsLoading(true);
+      try {
+        const totalValue = await getTotal(checkout.phone);
+        setTotal(totalValue);
+      } catch (error) {
+        console.error(error);
+        setTotal(0);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTotal();
+  }, [isOpen, currentStep, checkout.phone]);
+
   const handleCreateOrder = () => {
     if (checkout.email === "") return;
     if (checkout.direction === "") return;
     if (checkout.formaDePago === "") return;
     createOrder(cart, checkout, total, setCurrentStep, setIsLoading);
+    clearCart();
   };
 
   return (
@@ -90,9 +109,7 @@ export const DrawerCart = () => {
 
             {currentStep === "cart" && <CartList cart={cart} />}
 
-            {currentStep === "fields" && (
-              <Checkout setCurrentStep={setCurrentStep} onClose={onClose} />
-            )}
+            {currentStep === "fields" && <CheckoutContainer />}
 
             {currentStep === "finish" && <PreviewOrder checkout={checkout} />}
           </DrawerBody>

@@ -1,16 +1,9 @@
 import { Card } from "../components/Card";
-import { product } from "../helpers/products";
 import { SimpleGrid } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import { useProducts } from "../hooks/useProducts";
 
 export const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    product.list().then((data) => {
-      setProducts(data);
-    });
-  }, []);
+  const { products } = useProducts();
 
   return (
     <SimpleGrid
