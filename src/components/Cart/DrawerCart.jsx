@@ -68,9 +68,9 @@ export const DrawerCart = () => {
     clearCart();
   };
 
-  // if (!isOpen) {
-  //   setCurrentStep('cart')
-  // }
+  if (!isOpen) {
+    setCurrentStep('cart')
+  }
 
   return (
     <>
