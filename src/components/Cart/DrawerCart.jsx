@@ -69,7 +69,7 @@ export const DrawerCart = () => {
     // setCurrentStep('cart')
   };
 
-  if (onClose) {
+  if (!isOpen) {
     setCurrentStep('cart')
   }
 
