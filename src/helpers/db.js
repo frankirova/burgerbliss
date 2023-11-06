@@ -20,6 +20,7 @@ export const createOrder = async (
       buyer: { ...checkout },
       items: cart,
       total: total,
+      state: 'No leído'
     };
     await supabase.from("orders").upsert(order);
     const response = await supabase.from("products").select();
