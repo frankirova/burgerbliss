@@ -66,6 +66,7 @@ export const DrawerCart = () => {
     if (checkout.formaDePago === "") return;
     createOrder(cart, checkout, total, setCurrentStep, setIsLoading);
     clearCart();
+    setCurrentStep('cart')
   };
 
   return (
